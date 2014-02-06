@@ -1,0 +1,18 @@
+for c=1:20;
+a=0; b=5; dx=(b-a)/1000;
+x=[a:dx:b];
+k=@(x) 1-exp(-x);
+y=k(x);
+p=polyfit(x,y,c);
+f=polyval(p,x);
+E=abs(y-f);
+clf
+figure (1)
+plot(x,y,'r',x,f,'b')
+grid on
+figure (2)
+plot(x,E);
+grid on
+pause(0.5)
+refreshdata
+end
